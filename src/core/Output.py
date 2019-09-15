@@ -1,12 +1,11 @@
-'''
-*| This file is part of cony
-*|
-*| @package     Pysol python cli application
-*| @author      <lotfio lakehal>
-*| @license     MIT
-*| @version     0.1.0
-*| @copyright   2019 lotfio lakehal
-'''
+#  -*- coding: utf-8 -*-
+#| This file is part of cony
+#|
+#| @package     Pysol python cli application
+#| @author      <lotfio lakehal>
+#| @license     MIT
+#| @version     0.1.0
+#| @copyright   2019 lotfio lakehal
 
 import sys
 
@@ -21,5 +20,6 @@ class Output:
         '''
         pass
 
-    def writeLn(self, line = ''):
+    def writeLn(self, line = '', color = 'white'):
+        
         return sys.stdout.write(line)
