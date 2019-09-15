@@ -7,6 +7,7 @@
 #| @version     0.1.0
 #| @copyright   2019 lotfio lakehal
 
+import os.path
 from src.cfg.app import *
 
 class App:
@@ -46,11 +47,23 @@ class App:
 
 
     def bind_inp_out(self):
-        pass
+        
+        comm = self.input.command()
+
+        if(comm):
+            f = root + "/commands/" + comm.lower() + ".py"
+
+            if os.path.isfile(f):
+                import src.commands.info as c
+                c = c.info()
+            else:
+               self.output.writeLn("\n [ command "+ self.input.command() +" not found ]\n")
+               exit()
 
     def run(self):
         '''
         + run application
         '''
+        self.bind_inp_out()
         self.display_logo()
         self.display_basic_info()
