@@ -7,18 +7,28 @@
 #| @version     0.1.0
 #| @copyright   2019 lotfio lakehal
 
-from src.core.Command import Command
+class info:
 
-class info(Command):
+    def __init__(self, inp, out):
+        self.inp = inp
+        self.out = out
 
     def execute(self, sub = None, options = [], flags = []):
 
         # This method should execute our commands
         if(sub == 'hello'):
-            self.hello()
+            return self.hello()
 
-        return self.output.writeLn(" Command help msg here ")
+        return self.help()
 
     def hello(self):
 
-        print("hello from Pysol")
+        print("\n hello from Pysol")
+
+
+    def help(self):
+
+        hp  = "\n [ info command ] \n\n"
+        hp += "  - This command helps you to get information about Pysol\n"
+
+        return self.out.writeLn(hp)
