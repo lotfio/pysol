@@ -26,18 +26,20 @@ class command(baseCommand):
         if(sub):
             if(sub == 'make'):
                 return self.make(options)
+            elif(sub == 'delete'):
+                return self.remove(options)
             else:
                 return self.no_sub_command(sub)
-        else:
-            pass
+
         return self.help()
 
 
-    # this is hello test method
+    # Make method
+    # This method creates a command based on the given name
     def make(self, options):
 
         if not options: # not name
-            raise RuntimeError("please enter a command name")
+            raise RuntimeError("please enter a command name that you want to create")
 
         name = options[0] #command name
 
@@ -56,7 +58,29 @@ class command(baseCommand):
                 for line in fin:
                     fout.write(line.replace('#class#', name))
 
+        return self.out.writeLn("\n command " + name + " has been created successfully \n")
 
+    # delete command method
+    # this method will delete command files
+    # based on the given name of course if exists in commands dir
+    def remove(self, options):
+
+        if not options: # not name
+            raise RuntimeError("please enter a command name that you want to delete")
+
+        name = options[0] #command name
+
+        f = cfg.root + "/commands/" + name.lower() + ".py"
+        # check if already exists
+        if os.path.isfile(f):
+            os.remove(f)
+            return self.out.writeLn("\n command "+name+" has been deleted successfully \n")
+        else:
+            raise RuntimeError("command "+ name + " doesn't exist")
+
+
+    # help method
+    # This method displays command help
     def help(self):
 
         hp  = "\n [ command ] \n\n"
