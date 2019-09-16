@@ -52,3 +52,38 @@ class Command:
             line = " " + com + (wsp * ' ') + self.avail_commands[com] + "\n" # format line with white spaces
             self.out.writeLn(line) # print line
 
+    # This is the help command method
+    # This method formats how command help should look
+    # This method should be called in all commands
+    # In case of help change update this method as it fits
+    def command_help(self, command, msg, sub, options, flags):
+
+        hp  = "\n=| "+ command +" |=\n\n"
+        hp += msg
+        hp += "=| sub commands |=\n\n"
+
+        if(not sub):
+            hp += "  There is no sub commands for this command\n"
+        else:
+            t    = len(max(sub, key=len))
+            ad   = 8
+            for i in sub:
+                hp += " " * 3 + "> " + i +  ((t - len(i) + ad) * ' ')  + ":  " + sub[i] + "\n"
+
+        hp  += "\n=| options |=\n\n"
+
+        if(not options):
+            hp += "   There is no options for this command\n"
+        else:
+            for i in options:
+                hp += i
+
+        hp  += "\n=| flags |=\n\n"
+
+        if(not flags):
+            hp += "   There is no flags for this command\n"
+        else:
+            for i in flags:
+                hp += i
+
+        return self.out.writeLn(hp)

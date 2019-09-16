@@ -83,7 +83,11 @@ class command(baseCommand):
     # This method displays command help
     def help(self):
 
-        hp  = "\n [ command ] \n\n"
-        hp += "  - This command helps you to add commands to Pysol\n"
-
-        return self.out.writeLn(hp)
+        msg = "   This is a build in command\n   This command helps you to create and delete other commands \n\n"
+        sub = {
+            "make"   : "This is make command",
+            "delete" : "This is delete command"
+        }
+        options = {}
+        flags   = {}
+        return  self.command_help(self.__class__.__name__, msg, sub, options, flags)
