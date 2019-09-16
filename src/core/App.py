@@ -12,6 +12,7 @@ import sys
 import src.cfg.app as cfg
 from   src.core.Command import Command
 from   src.core.helpers import load_module
+from   src.exceptions.CommandNotFoundException import CommandNotFoundException
 
 class App:
 
@@ -64,16 +65,20 @@ class App:
                 a       = load_module("src.commands." + comm)
                 command = getattr(a, comm)
                 cmd     = command(self.inp, self.out)
-                cmd.execute(self.inp.subcommand(), self.inp.options(), self.inp.flags())
-                exit()
-
+                exit(
+                    cmd.execute(self.inp.subcommand(), self.inp.options(), self.inp.flags())
+                )
             else:
-               self.out.writeLn("\n [ command "+ self.inp.command() +" not found ]\n")
-               exit()
+               raise CommandNotFoundException("command "+comm + " not found")
 
     # run application
     def run(self):
-        self.bind_inp_out()
-        self.display_logo()
-        self.display_basic_info()
-        self.baseCommand.available_commands()
+        try:
+            self.bind_inp_out()
+            self.display_logo()
+            self.display_basic_info()
+            self.baseCommand.available_commands()
+        except Exception as ex:
+            err  = "\n => " + str(ex.__class__.__name__) + " :\n"
+            err += "   - "  + str(ex)
+            exit(err)
