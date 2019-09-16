@@ -8,27 +8,31 @@
 #| @copyright   2019 lotfio lakehal
 
 import os.path
-from src.cfg.app import *
+import sys
+from   src.cfg.app import *
 
 class App:
 
     def __init__(self, inp, output):
-        ''' init '''
+        #
+        # constructor
+        #
 
         self.input  = inp
         self.output = output
 
     def display_logo(self):
-        '''
-        + display app logo
-        '''
+        #
+        # display app logo
+        #
+
         f = open(logo_file)
         self.output.writeLn(f.read())
 
     def display_basic_info(self):
-        '''
-        + display app basic info
-        '''
+        #
+        # display app basic info
+        #
         info  = "\nWelcome to " + app_name + ' ' + app_version + ' by ' + app_author + '\n'
         info += "\nUsage : \n"
         info += "\n command:subcommand [options] [--flags] \n"
@@ -47,18 +51,37 @@ class App:
 
 
     def bind_inp_out(self):
-        
+        #
+        # bind input to command and return output
+        #
         comm = self.input.command()
 
         if(comm):
             f = root + "/commands/" + comm.lower() + ".py"
 
             if os.path.isfile(f):
-                import src.commands.info as c
-                c = c.info()
+
+                a = self.load_module("src.commands." + comm)
+                command = getattr(a, comm)
+                cmd = command()
+                cmd.execute(self.input.subcommand(), self.input.options(), self.input.flags())
+                exit()
+
             else:
                self.output.writeLn("\n [ command "+ self.input.command() +" not found ]\n")
                exit()
+
+    def load_module(self, module):
+        #
+        # module_path = "mypackage.%s" % module
+        #
+        module_path = module
+
+        if module_path in sys.modules:
+            return sys.modules[module_path]
+
+        return __import__(module_path, fromlist=[module])
+
 
     def run(self):
         '''
