@@ -10,16 +10,13 @@
 import sys
 
 class Output:
-    '''
-    * input class
-    '''
+
 
     def __init__(self):
-        '''
-        init
-        '''
         pass
 
+    # writeLine method
+    # this method writes to the output
+    # TODO::adding colors support
     def writeLn(self, line = '', color = 'white'):
-        
         return sys.stdout.write(line)

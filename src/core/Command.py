@@ -16,10 +16,19 @@ class Command:
     # @var available commands
     avail_commands = {}
 
+    # constructor
+    # setting input and output
+    def __init__(self, inp, out):
+        self.inp = inp
+        self.out = out
+
+    # no sub command method
+    # return no command found
     def no_sub_command(self):
         return print("\n no sub command !")
 
-
+    # available commands method
+    # list and display all commands and there description
     def available_commands(self):
 
         print("\nAvailable commands :\n")
@@ -39,5 +48,6 @@ class Command:
 
             ad   = 4 if t > 20 else 17 ## if taller than 20 characters use 4 spaces only else use 17
             wsp  = ((t - len(com) + ad)) ## number of white spaces for each command
-            print( " " + com + (wsp * ' ') + self.avail_commands[com]) # print white space
+            line = " " + com + (wsp * ' ') + self.avail_commands[com] + "\n" # format line with white spaces
+            self.out.writeLn(line) # print line
 

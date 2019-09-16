@@ -11,12 +11,18 @@ from src.core.Command import Command as baseCommand
 
 class command(baseCommand):
 
+    # comand description
     description = 'This command helps you to create, delete and update commands'
 
+    # constructor method
+    # init input and output
     def __init__(self, inp, out):
         self.inp = inp
         self.out = out
 
+    # execute method
+    # this method is where your sub commands and flags should be
+    # executed
     def execute(self, sub = None, options = [], flags = []):
 
         # This method should execute our commands
@@ -29,8 +35,9 @@ class command(baseCommand):
             pass
         return self.help()
 
-    def hello(self):
 
+    # this is hello test method
+    def hello(self):
         print("\n hello from Pysol")
 
 

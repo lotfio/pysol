@@ -9,10 +9,9 @@
 
 import sys
 
+# load module function
+# this function loads a module by string name
 def load_module(module):
-    #
-    # module_path = "mypackage.%s" % module
-    #
     module_path = module
 
     if module_path in sys.modules:

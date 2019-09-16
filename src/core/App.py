@@ -15,24 +15,22 @@ from   src.core.helpers import load_module
 
 class App:
 
+    # constructor method
+    # setting input + output + base command
     def __init__(self, inp, out):
-        #
-        # constructor
         self.inp         = inp
         self.out         = out
-        self.baseCommand = Command()
+        self.baseCommand = Command(inp, out)
 
+    # display logo method
+    # displays logo
     def display_logo(self):
-        #
-        # display app logo
-
         f = open(cfg.logo_file)
         self.out.writeLn(f.read())
 
+    # display basic information
+    # this method shows basic ibfo
     def display_basic_info(self):
-        #
-        # display app basic info
-
         info  = "\nWelcome to " + cfg.app_name + ' ' + cfg.app_version + ' by ' + cfg.app_author + '\n'
         info += "\nUsage : \n"
         info += "\n command:subcommand [options] [--flags] \n"
@@ -49,7 +47,9 @@ class App:
 
         self.out.writeLn(info)
 
-
+    # bind input output method
+    # this method checks if a command exists and it is
+    # a module then it will instantiate it and execute it
     def bind_inp_out(self):
         #
         # bind inp to command and return output
@@ -71,10 +71,8 @@ class App:
                self.out.writeLn("\n [ command "+ self.inp.command() +" not found ]\n")
                exit()
 
+    # run application
     def run(self):
-        '''
-        + run application
-        '''
         self.bind_inp_out()
         self.display_logo()
         self.display_basic_info()

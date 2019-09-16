@@ -18,12 +18,17 @@ class Input:
 
     # @property input options
     inp_options = []
-    
+
     # @property flags
     inp_flags   = []
 
+    # constructor method
+    # when application is run this constructor captures
+    # the input from argv and extract the array info
+    # command, subcommand, options, flags
+    # a command with colone will be spliced to command and sub commands
     def __init__(self):
-        # constructor method
+
         # remove file name
         sys.argv.pop(0)
         self.cmd = sys.argv
@@ -38,7 +43,7 @@ class Input:
                 sys.argv.pop(0)
             else: # if not sub command get only command
 
-                self.comm     = self.cmd[0] 
+                self.comm     = self.cmd[0]
                 self.sub_comm = None
                 sys.argv.pop(0)
         else:  # if no command no sub affect to None
@@ -54,18 +59,22 @@ class Input:
                 else:
                     self.inp_options.append(x)
 
+    # command method
+    # returns input command
     def command(self):
-        # return input command method
         return self.comm
 
+    # subcommand method
+    # returns input subcommand
     def subcommand(self):
-        # return input sub command method
         return self.sub_comm
 
+    # option method
+    # returns input options as ana array
     def options(self):
-        # return input options method
         return self.inp_options
 
+    # flags method
+    # returns input flags as an array
     def flags(self):
-        # return input flags method
         return self.inp_flags
