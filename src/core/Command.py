@@ -20,7 +20,6 @@ class Command:
         return print("\n no sub command !")
 
 
-
     def available_commands(self):
 
         print("\nAvailable commands :\n")
@@ -38,5 +37,7 @@ class Command:
 
         for com in self.avail_commands:
 
-           print( " "+com + ((t - len(com) + 18) * ' ') + self.avail_commands[com])
+            ad   = 4 if t > 20 else 17 ## if taller than 20 characters use 4 spaces only else use 17
+            wsp  = ((t - len(com) + ad)) ## number of white spaces for each command
+            print( " " + com + (wsp * ' ') + self.avail_commands[com]) # print white space
 

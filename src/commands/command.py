@@ -11,7 +11,7 @@ from src.core.Command import Command as baseCommand
 
 class command(baseCommand):
 
-    description = 'Command helps you to create, delete and update commands'
+    description = 'This command helps you to create, delete and update commands'
 
     def __init__(self, inp, out):
         self.inp = inp

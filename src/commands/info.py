@@ -9,7 +9,7 @@
 
 class info:
 
-    description = 'Command info displays app information'
+    description = 'This command displays app information'
 
     def __init__(self, inp, out):
         self.inp = inp
