@@ -16,18 +16,7 @@ class info(baseCommand):
     # this method is where your sub commands and flags should be
     # executed
     def execute(self, sub = None, options = [], flags = []):
-
-        # This method should execute our commands
-        if(sub == 'hello'):
-            return self.hello()
-
-        return self.help()
-
-    # test hello method
-    def hello(self):
-
-        print("\n hello from Pysol")
-
+        return self.display_basic_info()
 
     # help method
     # this method will display this comand help
