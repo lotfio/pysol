@@ -10,6 +10,7 @@
 import glob, os
 from src.cfg.app import root
 from src.core.helpers import load_module
+from src.exceptions.SubCommandNotFoundException import SubCommandNotFoundException
 
 class Command:
 
@@ -24,8 +25,8 @@ class Command:
 
     # no sub command method
     # return no command found
-    def no_sub_command(self):
-        return print("\n no sub command !")
+    def no_sub_command(self, sub):
+        raise SubCommandNotFoundException("sub command " + sub + " not found")
 
     # available commands method
     # list and display all commands and there description

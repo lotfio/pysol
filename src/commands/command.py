@@ -14,12 +14,6 @@ class command(baseCommand):
     # comand description
     description = 'This command helps you to create, delete and update commands'
 
-    # constructor method
-    # init input and output
-    def __init__(self, inp, out):
-        self.inp = inp
-        self.out = out
-
     # execute method
     # this method is where your sub commands and flags should be
     # executed
@@ -27,17 +21,17 @@ class command(baseCommand):
 
         # This method should execute our commands
         if(sub):
-            if(sub == 'hello'):
-                return self.hello()
+            if(sub == 'make'):
+                return self.make()
             else:
-                return self.no_sub_command()
+                return self.no_sub_command(sub)
         else:
             pass
         return self.help()
 
 
     # this is hello test method
-    def hello(self):
+    def make(self):
         print("\n hello from Pysol")
 
 
