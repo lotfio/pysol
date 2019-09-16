@@ -30,7 +30,7 @@ class App:
         self.out.writeLn(f.read())
 
     # display basic information
-    # this method shows basic ibfo
+    # this method shows basic info
     def display_basic_info(self):
         info  = "\nWelcome to " + cfg.app_name + ' ' + cfg.app_version + ' by ' + cfg.app_author + '\n'
         info += "\nUsage : \n"
