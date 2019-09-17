@@ -1,2 +1,2 @@
 ### :fire: Introduction :
-**Pysol** python console application 
+**Pysol** python console application made easy

@@ -48,12 +48,12 @@ class App:
 
     # run application
     def run(self):
-        #try:
+        try:
             self.bind_inp_out()
             self.baseCommand.display_logo()
             self.baseCommand.display_basic_info()
             self.baseCommand.available_commands()
-        #except Exception as ex:
-        #    err  = "\n => " + str(ex.__class__.__name__) + " :\n"
-        #    err += "   - "  + str(ex)
-        #    exit(err)
+        except Exception as ex:
+            err  = "\n => " + str(ex.__class__.__name__) + " :\n"
+            err += "   - "  + str(ex)
+            exit(err)
