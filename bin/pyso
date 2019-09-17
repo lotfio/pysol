@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#| This file is part of cony
+#|
+#| @package     pysol python cli application
+#| @author      <lotfio lakehal>
+#| @license     MIT
+#| @version     0.1.0
+#| @copyright   2019 lotfio lakehal.b
+
+import sys
+from   os.path import dirname, realpath
+
+parentdir = dirname(dirname(realpath(__file__)))
+sys.path.append(parentdir)
+
+from pysol.core  import App
+from pysol.io    import Input, Output
+
+
+def main():
+    inp  = Input.Input()
+    out  = Output.Output()
+    app  = App.App(inp, out)
+    app.run()
+
+
+if __name__ == '__main__':
+    main()
