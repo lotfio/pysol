@@ -1,7 +1,7 @@
 #  -*- coding: utf-8 -*-
 #| This file is part of cony
 #|
-#| @package     Pysol python cli application
+#| @package     pysol python cli application
 #| @author      <lotfio lakehal>
 #| @license     MIT
 #| @version     0.1.0
@@ -9,10 +9,10 @@
 
 import os.path
 import sys
-import src.cfg.app as cfg
-from   src.core.Command import Command
-from   src.core.helpers import load_module
-from   src.exceptions.CommandNotFoundException import CommandNotFoundException
+import pysol.conf.app as cfg
+from   pysol.core.Command import Command
+from   pysol.core.helpers import load_module
+from   pysol.exceptions.CommandNotFoundException import CommandNotFoundException
 
 class App:
 
@@ -37,7 +37,7 @@ class App:
 
             if os.path.isfile(f):
 
-                a       = load_module("src.commands." + comm)
+                a       = load_module("pysol.commands." + comm)
                 command = getattr(a, comm)
                 cmd     = command(self.inp, self.out)
                 exit(
@@ -48,12 +48,12 @@ class App:
 
     # run application
     def run(self):
-        try:
+        #try:
             self.bind_inp_out()
             self.baseCommand.display_logo()
             self.baseCommand.display_basic_info()
             self.baseCommand.available_commands()
-        except Exception as ex:
-            err  = "\n => " + str(ex.__class__.__name__) + " :\n"
-            err += "   - "  + str(ex)
-            exit(err)
+        #except Exception as ex:
+        #    err  = "\n => " + str(ex.__class__.__name__) + " :\n"
+        #    err += "   - "  + str(ex)
+        #    exit(err)

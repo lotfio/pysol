@@ -1,15 +1,15 @@
 #  -*- coding: utf-8 -*-
 #| This file is part of cony
 #|
-#| @package     Pysol python cli application
+#| @package     pysol python cli application
 #| @author      <lotfio lakehal>
 #| @license     MIT
 #| @version     0.1.0
 #| @copyright   2019 lotfio lakehal
 
 import os
-import src.cfg.app as cfg
-from   src.core.Command import Command as baseCommand
+import pysol.conf.app as cfg
+from   pysol.core.Command import Command as baseCommand
 
 
 class command(baseCommand):

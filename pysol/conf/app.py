@@ -18,4 +18,4 @@ app_name    = 'Pysol'
 app_version = '0.1.0'
 app_author  = 'lotfio lakehal'
 
-logo_file   = root + '/cfg/logo'
+logo_file   = root + '/conf/logo'

@@ -1,12 +1,12 @@
 #  -*- coding: utf-8 -*-
 #| This file is part of cony
 #|
-#| @package     Pysol python cli application
+#| @package     pysol python cli application
 #| @author      <lotfio lakehal>
 #| @license     MIT
 #| @version     0.1.0
 #| @copyright   2019 lotfio lakehal
-from src.core.Command import Command as baseCommand
+from pysol.core.Command import Command as baseCommand
 
 class info(baseCommand):
     #command description
@@ -23,6 +23,6 @@ class info(baseCommand):
     def help(self):
 
         hp  = "\n [ info command ] \n\n"
-        hp += "  - This command helps you to get information about Pysol\n"
+        hp += "  - This command helps you to get information about pysol\n"
 
         return self.out.writeLn(hp)

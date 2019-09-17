@@ -1,16 +1,16 @@
 #  -*- coding: utf-8 -*-
 #| This file is part of cony
 #|
-#| @package     Pysol python cli application
+#| @package     pysol python cli application
 #| @author      <lotfio lakehal>
 #| @license     MIT
 #| @version     0.1.0
 #| @copyright   2019 lotfio lakehal
 
-import glob, os
-import src.cfg.app as cfg
-from src.core.helpers import load_module
-from src.exceptions.SubCommandNotFoundException import SubCommandNotFoundException
+import  glob, os
+import  pysol.conf.app as cfg
+from    pysol.core.helpers import load_module
+from    pysol.exceptions.SubCommandNotFoundException import SubCommandNotFoundException
 
 class Command:
 
@@ -62,7 +62,7 @@ class Command:
         for file in glob.glob("*.py"):
 
             f = file.split(".")[0]
-            m = load_module("src.commands."+f)
+            m = load_module("pysol.commands."+f)
             c = getattr(m, f)
             self.avail_commands[f] = c.description
 
